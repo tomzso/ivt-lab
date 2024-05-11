@@ -1,5 +1,8 @@
 package hu.bme.mit.spaceship;
 
+
+
+
 /**
 * A simple spaceship with two proton torpedo stores and four lasers
 */
@@ -10,9 +13,9 @@ public class GT4500 implements SpaceShip {
 
   private boolean wasPrimaryFiredLast = false;
 
-  public GT4500() {
-    this.primaryTorpedoStore = new TorpedoStore(10);
-    this.secondaryTorpedoStore = new TorpedoStore(10);
+  public GT4500(TorpedoStore primaryTorpedoStore, TorpedoStore secondaryTorpedoStore) {
+    this.primaryTorpedoStore = primaryTorpedoStore;
+    this.secondaryTorpedoStore = secondaryTorpedoStore;
   }
 
   public boolean fireLaser(FiringMode firingMode) {
@@ -79,11 +82,13 @@ public class GT4500 implements SpaceShip {
       case ALL:
         // try to fire both of the torpedo stores
 
-        while (!primaryTorpedoStore.isEmpty())
-          firingSuccess = primaryTorpedoStore.fire(1) || firingSuccess;
+        // if both of the stores are empty, nothing can be done, return failure
+        if (! primaryTorpedoStore.isEmpty() && ! secondaryTorpedoStore.isEmpty()) {
+          boolean firingSuccessPrimary = primaryTorpedoStore.fire(1);
+          boolean firingSuccessSecondary = secondaryTorpedoStore.fire(1);
 
-        while (!secondaryTorpedoStore.isEmpty())
-          firingSuccess = secondaryTorpedoStore.fire(1) || firingSuccess;
+          firingSuccess = firingSuccessPrimary || firingSuccessSecondary;
+        }
 
         break;
     }
