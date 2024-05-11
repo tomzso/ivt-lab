@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.mockito.ArgumentMatchers.anyString;
+
 import static org.mockito.Mockito.*;
 
 public class GT4500Test {
@@ -27,7 +27,7 @@ public class GT4500Test {
   }
 
   @Test
-  public void fireTorpedo_Single_Success(){
+  void fireTorpedo_Single_Success(){
     // Arrange
 
     // Act
@@ -39,7 +39,7 @@ public class GT4500Test {
   }
 
   @Test
-  public void fireTorpedo_All_Success(){
+  void fireTorpedo_All_Success(){
     // Arrange
 
     // Act
@@ -51,7 +51,7 @@ public class GT4500Test {
   }
 
   @Test
-  public void fireTorpedo_All_Success_Twice_interaction(){
+  void fireTorpedo_All_Success_Twice_interaction(){
     // Arrange
 
     // Act
