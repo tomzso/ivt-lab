@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.mockito.Mockito.*;
 
-public class GT4500Test {
+class GT4500Test {
 
   private GT4500 ship;
   private TorpedoStore mockPrimary;
